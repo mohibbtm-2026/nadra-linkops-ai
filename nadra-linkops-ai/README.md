@@ -52,7 +52,7 @@ Doing all of that manually in notebooks, WhatsApp, or scattered Excel sheets mak
 
 > **Replace this with your real public GitHub repo before submission:**
 
-**Repository URL:** [https://github.com/your-username/nadra-linkops-ai](https://github.com/your-username/nadra-linkops-ai)
+**Repository URL:** [https://github.com/your-username/nadra-linkops-ai](https://github.com/mohibbtm-2026/nadra-linkops-ai/)
 
 > Important: make sure the repository is **public**. Test it in incognito mode before submitting.
 
