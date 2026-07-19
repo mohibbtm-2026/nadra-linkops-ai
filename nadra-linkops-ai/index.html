@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NADRA Network Complaint Management System — RHO Quetta Region</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section id="loginScreen" class="login-screen">
+    <div class="login-layout">
+      <aside class="brand-showcase">
+        <div class="badge-row">
+          <span class="small-badge">Government of Pakistan</span>
+          <span class="small-badge outline">NADRA RHO Quetta</span>
+        </div>
+
+        <div class="brand-lockup login-brand">
+          <div class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 120 120" role="img">
+              <defs>
+                <linearGradient id="greenGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#0b7a33"></stop>
+                  <stop offset="100%" stop-color="#16a34a"></stop>
+                </linearGradient>
+              </defs>
+              <circle cx="60" cy="60" r="58" fill="url(#greenGrad)"></circle>
+              <circle cx="54" cy="52" r="25" fill="#ffffff"></circle>
+              <circle cx="62" cy="50" r="21" fill="#0f7b35"></circle>
+              <polygon points="76,32 79,41 89,41 81,47 84,56 76,50 68,56 71,47 63,41 73,41" fill="#ffffff"></polygon>
+            </svg>
+          </div>
+          <div>
+            <p class="eyebrow inverse">Regional Operations Application</p>
+            <h1>NADRA Network Complaint Management System</h1>
+            <p class="lead">RHO Quetta Region dashboard for complaint intake, telecom escalation, site mapping, AD support, technical jobs, user management, and reporting for higher authorities.</p>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <article><strong id="loginStatSites">0</strong><span>Configured sites</span></article>
+          <article><strong>5</strong><span>Link/media providers</span></article>
+          <article><strong>1</strong><span>Central complaint desk</span></article>
+        </div>
+
+        <div class="showcase-card">
+          <h3>Core operational modules</h3>
+          <ul>
+            <li>Fast complaint intake with close/resolve workflow</li>
+            <li>Balochistan map-based site visibility</li>
+            <li>AI-generated formal telecom escalation drafts</li>
+            <li>AD support, technical job tracking, and user access control</li>
+          </ul>
+        </div>
+      </aside>
+
+      <section class="login-card">
+        <p class="eyebrow">Secure access</p>
+        <h2>Sign in</h2>
+        <p class="muted">Use the demo credentials below to test the complete application workflow.</p>
+
+        <form id="loginForm" class="app-form">
+          <label>Official Email / Username
+            <input id="loginUsername" type="text" required placeholder="engineer@nadra.pk" />
+          </label>
+          <label>Password
+            <input id="loginPassword" type="password" required placeholder="Enter password" />
+          </label>
+          <button type="submit">Sign In</button>
+        </form>
+
+        <div id="loginMessage" class="form-message"></div>
+
+        <div class="demo-box">
+          <strong>Demo credentials</strong>
+          <div class="credential-grid single-col">
+            <div><span>Admin</span><code>admin@nadra.pk / Admin@123</code></div>
+            <div><span>Network Engineer</span><code>engineer@nadra.pk / Pass@123</code></div>
+            <div><span>Network Technician</span><code>technician@nadra.pk / Tech@123</code></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <div id="appShell" class="app-shell hidden">
+    <header class="top-strip">
+      <div class="container top-strip-inner">
+        <div class="strip-links">
+          <span>Government of Pakistan</span>
+          <span>NADRA</span>
+          <span>RHO Quetta Region</span>
+        </div>
+        <div class="strip-actions">
+          <span id="currentUserLabel" class="user-label">Signed in</span>
+          <button type="button" class="ghost-btn" id="logoutBtn">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <header class="site-header container">
+      <div class="brand-lockup app-brand">
+        <div class="brand-icon small" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <defs>
+              <linearGradient id="greenGrad2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0b7a33"></stop>
+                <stop offset="100%" stop-color="#16a34a"></stop>
+              </linearGradient>
+            </defs>
+            <circle cx="60" cy="60" r="58" fill="url(#greenGrad2)"></circle>
+            <circle cx="54" cy="52" r="25" fill="#ffffff"></circle>
+            <circle cx="62" cy="50" r="21" fill="#0f7b35"></circle>
+            <polygon points="76,32 79,41 89,41 81,47 84,56 76,50 68,56 71,47 63,41 73,41" fill="#ffffff"></polygon>
+          </svg>
+        </div>
+        <div>
+          <p class="eyebrow">Operational dashboard</p>
+          <h2>NADRA Network Complaint Management System</h2>
+          <p class="subtitle">RHO Quetta Region — Complaint Desk, Site Directory, Balochistan Map, AD Support, Technical Tasks, User Access, and AI Escalation</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button type="button" class="ghost-btn" id="loadSampleBtn">Reload Sample Data</button>
+        <button type="button" id="backupBtn">Export Backup JSON</button>
+      </div>
+    </header>
+
+    <section class="hero-banner container">
+      <div class="hero-copy">
+        <p class="eyebrow">Monitoring and reporting</p>
+        <h1>NADRA Network Complaint Management System</h1>
+        <p>This application centralizes complaint intake, site mapping, telecom escalation, technical job tracking, AD support, user access management, and management reporting for NADRA regional operations in Quetta Region.</p>
+        <div class="hero-actions">
+          <button type="button" id="quickComplaintBtn">Open Complaint Intake</button>
+          <button type="button" class="ghost-btn" id="quickReportBtn">Open Reports</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>Operational snapshot</h3>
+        <div class="mini-stat-grid">
+          <div><strong id="miniComplaints">0</strong><span>Total complaints</span></div>
+          <div><strong id="miniOpen">0</strong><span>Open / active</span></div>
+          <div><strong id="miniSites">0</strong><span>Configured sites</span></div>
+          <div><strong id="miniUsers">0</strong><span>Authorized users</span></div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="tabs container" role="tablist" aria-label="Primary navigation">
+      <button id="dashboard-tab" class="tab active" type="button" role="tab" aria-selected="true" aria-controls="dashboard" data-tab="dashboard">Dashboard</button>
+      <button id="complaints-tab" class="tab" type="button" role="tab" aria-selected="false" aria-controls="complaints" data-tab="complaints">Complaint Desk</button>
+      <button id="reports-tab" class="tab" type="button" role="tab" aria-selected="false" aria-controls="reports" data-tab="reports">Reports</button>
+      <button id="map-tab" class="tab" type="button" role="tab" aria-selected="false" aria-controls="map" data-tab="map">Balochistan Map</button>
+      <button id="directory-tab" class="tab" type="button" role="tab" aria-selected="false" aria-controls="directory" data-tab="directory">Site Directory</button>
+      <button id="inventory-tab" class="tab" type="button" role="tab" aria-selected="false" aria-controls="inventory" data-tab="inventory">Inventory</button>
+      <button id="technical-tasks-tab" class="tab" type="button" role="tab" aria-selected="false" aria-controls="technical-tasks" data-tab="technical-tasks">Technical Tasks</button>
+      <button id="ad-support-tab" class="tab" type="button" role="tab" aria-selected="false" aria-controls="ad-support" data-tab="ad-support">AD Support</button>
+      <button id="users-tab" class="tab" type="button" role="tab" aria-selected="false" aria-controls="users" data-tab="users">User Management</button>
+      <button id="ai-assistant-tab" class="tab" type="button" role="tab" aria-selected="false" aria-controls="ai-assistant" data-tab="ai-assistant">AI Assistant</button>
+      <button id="documentation-tab" class="tab" type="button" role="tab" aria-selected="false" aria-controls="documentation" data-tab="documentation">Project Notes</button>
+    </nav>
+
+    <main class="container">
+      <section class="tab-panel active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+        <div class="card-grid kpi-grid">
+          <article class="card kpi success"><span>Total Complaints</span><strong id="kpiTotal">0</strong><small>All recorded network complaints</small></article>
+          <article class="card kpi warning"><span>Open</span><strong id="kpiOpen">0</strong><small>Awaiting action</small></article>
+          <article class="card kpi accent"><span>In Progress</span><strong id="kpiProgress">0</strong><small>Provider / engineer follow-up</small></article>
+          <article class="card kpi success-light"><span>Resolved</span><strong id="kpiResolved">0</strong><small>Resolved but not closed</small></article>
+          <article class="card kpi success-dark"><span>Closed</span><strong id="kpiClosed">0</strong><small>Finalized complaints</small></article>
+          <article class="card kpi danger-light"><span>Non-Connectivity</span><strong id="kpiNonConnectivity">0</strong><small>LAN, power, application, or false alarm</small></article>
+        </div>
+
+        <article class="card icon-strip-card">
+          <div class="icon-strip">
+            <div class="icon-card">
+              <div class="icon-badge network">
+                <svg viewBox="0 0 24 24"><path d="M4 17h4v-3H4v3zm6 0h4V7h-4v10zm6 0h4v-6h-4v6z" fill="currentColor"></path></svg>
+              </div>
+              <div><strong>Network Visibility</strong><span>Primary, backup, and local issue tracking</span></div>
+            </div>
+            <div class="icon-card">
+              <div class="icon-badge telecom">
+                <svg viewBox="0 0 24 24"><path d="M6 20h12v-2H6v2zm1-4h10l1-9H6l1 9zm3-11V3h4v2h5v2H5V5h5z" fill="currentColor"></path></svg>
+              </div>
+              <div><strong>Telecom Escalation</strong><span>Formal provider escalation and complaint follow-up</span></div>
+            </div>
+            <div class="icon-card">
+              <div class="icon-badge shield">
+                <svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5.5-3.8 10.7-8 12-4.2-1.3-8-6.5-8-12V6l8-4zm-1 13l6-6-1.4-1.4L11 12.2 8.4 9.6 7 11l4 4z" fill="currentColor"></path></svg>
+              </div>
+              <div><strong>Access Control</strong><span>Admin, Network Engineer, and Technician roles</span></div>
+            </div>
+            <div class="icon-card">
+              <div class="icon-badge report">
+                <svg viewBox="0 0 24 24"><path d="M5 3h10l4 4v14H5V3zm9 1.5V8h3.5L14 4.5zM8 12h8v2H8v-2zm0 4h8v2H8v-2zm0-8h5v2H8V8z" fill="currentColor"></path></svg>
+              </div>
+              <div><strong>Authority Reporting</strong><span>Comparisons and charts for higher authorities</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card critical-card">
+          <div class="card-header responsive-stack">
+            <div>
+              <h3>Critical complaint alerts</h3>
+              <p class="hint">High severity or both-link complaints requiring urgent follow-up</p>
+            </div>
+          </div>
+          <div id="criticalAlerts" class="alert-stack"></div>
+        </article>
+
+        <article class="card quick-actions-card">
+          <div class="card-header responsive-stack">
+            <div>
+              <h3>Quick navigation</h3>
+              <p class="hint">Jump directly to the most-used tasks</p>
+            </div>
+          </div>
+          <div class="quick-links-grid">
+            <button type="button" class="ghost-btn nav-jump-btn" data-go-tab="complaints">Complaint Intake</button>
+            <button type="button" class="ghost-btn nav-jump-btn" data-go-tab="reports">Management Reports</button>
+            <button type="button" class="ghost-btn nav-jump-btn" data-go-tab="map">Balochistan Map</button>
+            <button type="button" class="ghost-btn nav-jump-btn" data-go-tab="inventory">Inventory</button>
+            <button type="button" class="ghost-btn nav-jump-btn" data-go-tab="technical-tasks">Technical Tasks</button>
+          </div>
+        </article>
+
+        <div class="card-grid chart-grid">
+          <article class="card">
+            <div class="card-header"><div><h3>Status overview</h3><p class="hint">Complaint status distribution</p></div></div>
+            <div id="statusChart" class="chart-box"></div>
+          </article>
+          <article class="card">
+            <div class="card-header"><div><h3>Provider comparison</h3><p class="hint">Complaint load by telecom media</p></div></div>
+            <div id="providerBars" class="chart-box"></div>
+          </article>
+          <article class="card wide-card">
+            <div class="card-header"><div><h3>Monthly complaint trend</h3><p class="hint">Last six months comparison</p></div></div>
+            <div id="monthlyTrendChart" class="chart-box"></div>
+          </article>
+        </div>
+
+        <div class="dashboard-layout">
+          <article class="card">
+            <div class="card-header"><div><h3>Top recurring sites</h3><p class="hint">Sites with repeated complaint history</p></div></div>
+            <div id="topDauList" class="list-stack"></div>
+          </article>
+          <article class="card">
+            <div class="card-header"><div><h3>Recent complaints</h3><p class="hint">Latest five complaint records</p></div></div>
+            <div id="recentComplaints" class="table-wrapper compact"></div>
+          </article>
+        </div>
+
+        <div class="dashboard-layout">
+          <article class="card">
+            <div class="card-header"><div><h3>Recent AD requests</h3><p class="hint">Latest account support requests</p></div></div>
+            <div id="recentAdRequests" class="table-wrapper compact"></div>
+          </article>
+          <article class="card">
+            <div class="card-header"><div><h3>User access summary</h3><p class="hint">Access distribution by role and status</p></div></div>
+            <div id="userRoleSummary" class="chart-box"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="complaints" role="tabpanel" aria-labelledby="complaints-tab">
+        <article class="card helper-card">
+          <div class="helper-grid">
+            <div>
+              <p class="eyebrow">Primary operational screen</p>
+              <h3>Complaint intake is placed first for faster daily use</h3>
+              <p class="hint">Use site templates, record the issue, and resolve or close complaints from the same screen.</p>
+            </div>
+            <div class="steps-inline">
+              <span>1. Select site</span>
+              <span>2. Record issue</span>
+              <span>3. Save / Resolve / Close</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card form-card formal-form-card">
+          <div class="card-header responsive-stack">
+            <div>
+              <h3>Complaint intake form</h3>
+              <p class="hint">Core fields first, advanced fields below</p>
+            </div>
+            <span class="small-badge outline dark">Complaint ID auto-generates if left blank</span>
+          </div>
+
+          <form id="complaintForm" class="app-form">
+            <input type="hidden" id="complaintRecordId" />
+
+            <section class="form-section">
+              <div class="section-title-row">
+                <h4>Section A — Site details</h4>
+                <p class="hint">Select from site directory templates or type manually</p>
+              </div>
+              <div class="form-grid formal-grid">
+                <label>Site Template
+                  <select id="siteTemplate"><option value="">Select a Quetta-region site</option></select>
+                </label>
+                <label>Site / DAU Name <span class="required-mark">*</span>
+                  <input id="dauName" list="dauSuggestions" required placeholder="e.g. NRC Pishin" />
+                  <datalist id="dauSuggestions"></datalist>
+                </label>
+                <label>District / City
+                  <input id="district" placeholder="Auto-filled if template selected" />
+                </label>
+                <label>Incharge Name <span class="required-mark">*</span>
+                  <input id="inchargeName" required placeholder="Enter current incharge name" />
+                </label>
+              </div>
+              <div id="selectedSiteInfo" class="site-info-box">Select a site template to display site details from the directory.</div>
+            </section>
+
+            <section class="form-section">
+              <div class="section-title-row">
+                <h4>Section B — Complaint details</h4>
+                <p class="hint">These are the minimum fields required to log a complaint quickly</p>
+              </div>
+              <div class="form-grid formal-grid">
+                <label>Provider / Media <span class="required-mark">*</span>
+                  <select id="provider">
+                    <option>PTCL DSL</option>
+                    <option>Wateen Telecom</option>
+                    <option>VSAT DVBRCS</option>
+                    <option>DRS</option>
+                    <option>3G/4G SIM</option>
+                  </select>
+                </label>
+                <label>Issue Type <span class="required-mark">*</span>
+                  <select id="issueNature">
+                    <option>Link Down</option>
+                    <option>High Latency</option>
+                    <option>Frequent Flapping</option>
+                    <option>No Authentication / PPP Down</option>
+                    <option>CPE / Router Fault</option>
+                    <option>Firewall Fault</option>
+                    <option>Switch Fault</option>
+                    <option>Faulty Device / Hardware</option>
+                    <option>DVBrcs IDU / ODU Faulty</option>
+                    <option>Low Bandwidth on DVBrcs</option>
+                    <option>LAN Issue</option>
+                    <option>Cable Disconnected from Firewall / LAN Switch</option>
+                    <option>ClearPass OnGuard Issue</option>
+                    <option>Power Issue / Fluctuating Electricity</option>
+                    <option>Generator Faulty</option>
+                    <option>OneApp / HQ Portal Down</option>
+                    <option>False Alarm</option>
+                  </select>
+                </label>
+                <label>Disruption Start <span class="required-mark">*</span>
+                  <input id="disruptionStart" type="datetime-local" required />
+                </label>
+                <label>Status
+                  <select id="status">
+                    <option>Open</option>
+                    <option>In Progress</option>
+                    <option>Resolved</option>
+                    <option>Closed</option>
+                    <option>Not Connectivity</option>
+                  </select>
+                </label>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="section-title-row">
+                <h4>Section C — Operational remarks</h4>
+                <p class="hint">NMS observations, telecom follow-up, and HQ intimation summary</p>
+              </div>
+              <label>Remarks
+                <textarea id="complaintRemarks" rows="4" placeholder="Example: NMS checked, PTCL primary down, telecom informed, HQ kept in CC."></textarea>
+              </label>
+            </section>
+
+            <details class="advanced-box">
+              <summary>Advanced / optional fields</summary>
+              <div class="form-grid formal-grid advanced-grid">
+                <label>Incharge Contact
+                  <input id="inchargeContact" placeholder="03xx-xxxxxxx" />
+                </label>
+                <label>Complaint ID Launched
+                  <input id="complaintId" placeholder="Auto if left blank" />
+                </label>
+                <label>Telecom Complaint / Ticket #
+                  <input id="telecomTicket" placeholder="e.g. PTCL-7784321" />
+                </label>
+                <label>Link Role
+                  <select id="linkRole">
+                    <option>Primary</option>
+                    <option>Secondary</option>
+                    <option>Both</option>
+                  </select>
+                </label>
+                <label>Validated Cause
+                  <select id="validatedCause">
+                    <option>Primary link down</option>
+                    <option>Secondary link down</option>
+                    <option>Both links down</option>
+                    <option>Provider outage</option>
+                    <option>Router / CPE issue</option>
+                    <option>Firewall issue</option>
+                    <option>Switch issue</option>
+                    <option>Hardware faulty</option>
+                    <option>DVBrcs IDU / ODU issue</option>
+                    <option>Low bandwidth on DVBrcs</option>
+                    <option>LAN / switch issue</option>
+                    <option>Cable disconnected from firewall / LAN switch</option>
+                    <option>ClearPass OnGuard issue</option>
+                    <option>Power issue</option>
+                    <option>Generator faulty</option>
+                    <option>HQ application / portal down</option>
+                    <option>False alarm</option>
+                  </select>
+                </label>
+                <label>Resolution Time
+                  <input id="resolutionTime" type="datetime-local" />
+                </label>
+                <label>User Impact
+                  <select id="userImpact">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                    <option>Critical</option>
+                  </select>
+                </label>
+              </div>
+            </details>
+
+            <div class="form-actions">
+              <button type="submit">Save Complaint</button>
+              <button type="button" class="ghost-btn" id="complaintResetBtn">Clear Form</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="card">
+          <div class="card-header responsive-stack">
+            <div>
+              <h3>Complaint register</h3>
+              <p class="hint">Search, filter, edit, resolve, close, and draft AI escalations</p>
+            </div>
+            <div class="toolbar wrap complaint-filter-bar">
+              <input id="complaintSearch" placeholder="Search site, incharge, provider, complaint ID..." />
+              <select id="complaintStatusFilter">
+                <option value="All">All Statuses</option>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+                <option value="Closed">Closed</option>
+                <option value="Not Connectivity">Not Connectivity</option>
+              </select>
+              <select id="complaintProviderFilter"><option value="All">All Providers</option></select>
+              <button type="button" class="ghost-btn" id="exportComplaintsCsvBtn">Export CSV</button>
+            </div>
+          </div>
+          <div id="complaintsTable" class="table-wrapper"></div>
+        </article>
+      </section>
+
+      <section class="tab-panel" id="reports" role="tabpanel" aria-labelledby="reports-tab">
+        <div class="card-grid report-grid-main">
+          <article class="card">
+            <div class="card-header responsive-stack">
+              <div>
+                <h3>Complaint management reporting</h3>
+                <p class="hint">Charts and comparisons designed for higher authorities and periodic review</p>
+              </div>
+              <div class="toolbar wrap">
+                <label class="inline-field">Month
+                  <input id="reportMonth" type="month" />
+                </label>
+                <button type="button" id="generateMonthlyReportBtn">Generate Report</button>
+                <button type="button" class="ghost-btn" id="printMonthlyReportBtn">Print / Save PDF</button>
+                <button type="button" class="ghost-btn" id="exportMonthlyCsvBtn">Export Monthly CSV</button>
+              </div>
+            </div>
+            <div id="monthlyReportSummary" class="summary-box"></div>
+            <div class="card-grid report-chart-grid">
+              <div class="card chart-nested"><h4>Status comparison</h4><div id="reportStatusChart" class="chart-box"></div></div>
+              <div class="card chart-nested"><h4>Provider comparison</h4><div id="reportProviderChart" class="chart-box"></div></div>
+              <div class="card chart-nested wide-card"><h4>Issue comparison</h4><div id="reportIssueChart" class="chart-box"></div></div>
+            </div>
+            <div id="monthlyReportTable" class="table-wrapper"></div>
+          </article>
+
+          <article class="card">
+            <div class="card-header"><div><h3>Backup and utilities</h3><p class="hint">For browser migration, handover, and template reload</p></div></div>
+            <div class="action-stack">
+              <button type="button" id="downloadTemplateBtn">Download Sample Dataset</button>
+              <label class="file-picker ghost-btn">Import Backup JSON
+                <input id="importFileInput" type="file" accept="application/json" />
+              </label>
+              <button type="button" class="ghost-btn danger-text" id="clearDataBtn">Clear All Local Data</button>
+            </div>
+            <div class="notice"><strong>Production note:</strong> this demo stores data in the browser for easy testing. For secure multi-user deployment, the recommended next step is Supabase or another managed database with server-side authentication.</div>
+          </article>
+        </div>
+
+        <article class="card">
+          <div class="card-header responsive-stack">
+            <div>
+              <h3>Inventory report overview</h3>
+              <p class="hint">Quick access to network and device inventory information site-wise</p>
+            </div>
+          </div>
+          <div id="reportsInventorySummary" class="summary-box"></div>
+          <div class="card-grid chart-grid">
+            <article class="card chart-nested"><h4>Primary media distribution</h4><div id="reportsInventoryChart" class="chart-box"></div></article>
+            <article class="card chart-nested"><h4>Inventory snapshot</h4><div id="reportsInventoryTable" class="table-wrapper compact"></div></article>
+          </div>
+        </article>
+
+        <div class="card-grid chart-grid">
+          <article class="card">
+            <div class="card-header"><div><h3>AD support report summary</h3><p class="hint">Recurring password reset and unlock patterns</p></div></div>
+            <div id="reportsAdSummary" class="summary-box"></div>
+            <div id="reportsAdChart" class="chart-box"></div>
+          </article>
+          <article class="card">
+            <div class="card-header"><div><h3>Technical task report summary</h3><p class="hint">Installations, upgrades, replacements, and repairs</p></div></div>
+            <div id="reportsTechSummary" class="summary-box"></div>
+            <div id="reportsTechChart" class="chart-box"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="map" role="tabpanel" aria-labelledby="map-tab">
+        <div class="card-grid map-grid">
+          <article class="card">
+            <div class="card-header responsive-stack">
+              <div>
+                <h3>Balochistan site visibility map</h3>
+                <p class="hint">Representative SVG map showing configured sites, sections, project sites, and MRV-related entries with complaint counts</p>
+              </div>
+              <div class="toolbar wrap">
+                <select id="mapTypeFilter">
+                  <option value="All">All Site Types</option>
+                </select>
+              </div>
+            </div>
+            <div id="balochistanMap" class="map-stage"></div>
+          </article>
+          <article class="card">
+            <div class="card-header"><div><h3>Selected site details</h3><p class="hint">Hover markers for counts, click markers for details</p></div></div>
+            <div id="mapSiteDetail" class="summary-box">Select a marker on the map to view site details and complaint summary.</div>
+            <div class="map-legend">
+              <div><span class="legend-dot critical"></span> Critical / both-link / high-open complaints</div>
+              <div><span class="legend-dot active"></span> Active complaints</div>
+              <div><span class="legend-dot normal"></span> No active complaints</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="directory" role="tabpanel" aria-labelledby="directory-tab">
+        <article class="card helper-card">
+          <div class="helper-grid">
+            <div>
+              <p class="eyebrow">Site administration</p>
+              <h3>Directory moved to a separate page</h3>
+              <p class="hint">Administrators can create, update, and remove site records including DAUs, sections, project sites, and MRV-related points. The configured site count updates automatically.</p>
+            </div>
+          </div>
+        </article>
+
+        <div id="directoryAdminNotice" class="card hidden">
+          <div class="card-header"><div><h3>Directory maintenance</h3><p class="hint">Only administrators can modify site directory data.</p></div></div>
+          <div class="notice">You can view the directory, but create/update/delete actions are restricted to administrators.</div>
+        </div>
+
+        <div id="directoryAdminContent" class="card form-card hidden">
+          <div class="card-header"><div><h3>Directory update form</h3><p class="hint">Add or update site entries used by complaint intake, mapping, and reporting</p></div></div>
+          <form id="directoryForm" class="app-form">
+            <input type="hidden" id="directoryRecordId" />
+            <div class="form-grid formal-grid">
+              <label>Site / Office Name
+                <input id="directorySiteName" required placeholder="e.g. NRC Pishin / Verification Section / Project Site" />
+              </label>
+              <label>Site Type
+                <select id="directoryType">
+                  <option>DAU</option>
+                  <option>Section</option>
+                  <option>Project Site</option>
+                  <option>MRV</option>
+                </select>
+              </label>
+              <label>District
+                <input id="directoryDistrict" required placeholder="e.g. Pishin" />
+              </label>
+              <label>Address
+                <input id="directoryAddress" required placeholder="Public location / office address" />
+              </label>
+              <label>Timing
+                <input id="directoryTiming" required placeholder="e.g. 8:30 AM - 4:30 PM" />
+              </label>
+              <label>Source
+                <input id="directorySource" placeholder="e.g. Public NADRA office listing / Internal update" />
+              </label>
+              <label>Primary Media
+                <select id="directoryPrimaryMedia">
+                  <option>PTCL DSL</option>
+                  <option>Wateen Telecom</option>
+                  <option>VSAT DVBRCS</option>
+                  <option>DRS</option>
+                  <option>3G/4G SIM</option>
+                  <option>Fiber</option>
+                  <option>None</option>
+                </select>
+              </label>
+              <label>Primary Bandwidth
+                <input id="directoryPrimaryBandwidth" placeholder="e.g. 10 Mbps" />
+              </label>
+              <label>Secondary Media
+                <select id="directorySecondaryMedia">
+                  <option>3G/4G SIM</option>
+                  <option>PTCL DSL</option>
+                  <option>Wateen Telecom</option>
+                  <option>VSAT DVBRCS</option>
+                  <option>DRS</option>
+                  <option>Fiber</option>
+                  <option>None</option>
+                </select>
+              </label>
+              <label>Secondary Bandwidth
+                <input id="directorySecondaryBandwidth" placeholder="e.g. 4 Mbps" />
+              </label>
+              <label>Map X Position (%)
+                <input id="directoryMapX" type="number" min="5" max="95" step="1" placeholder="e.g. 46" />
+              </label>
+              <label>Map Y Position (%)
+                <input id="directoryMapY" type="number" min="5" max="95" step="1" placeholder="e.g. 58" />
+              </label>
+            </div>
+            <div class="notice"><strong>Map note:</strong> X/Y positions are used to place the site marker on the Balochistan SVG map. For sections within Quetta, use nearby Quetta coordinates.</div>
+            <div class="form-actions">
+              <button type="submit">Save Directory Entry</button>
+              <button type="button" class="ghost-btn" id="directoryResetBtn">Clear</button>
+            </div>
+          </form>
+        </div>
+
+        <article class="card">
+          <div class="card-header responsive-stack">
+            <div>
+              <h3>Configured site directory</h3>
+              <p class="hint">Search all currently configured DAUs, sections, project sites, and MRV-related records</p>
+            </div>
+            <div class="toolbar wrap">
+              <input id="directorySearch" placeholder="Search site, district, type, address..." />
+              <select id="directoryTypeFilter">
+                <option value="All">All Site Types</option>
+              </select>
+              <span class="small-badge public-badge">Dynamic site count enabled</span>
+            </div>
+          </div>
+          <div id="directoryTable" class="table-wrapper"></div>
+        </article>
+      </section>
+
+      <section class="tab-panel" id="inventory" role="tabpanel" aria-labelledby="inventory-tab">
+        <div id="inventoryManageNotice" class="card hidden">
+          <div class="card-header"><div><h3>Inventory maintenance notice</h3><p class="hint">Network Technician role has view access only.</p></div></div>
+          <div class="notice">Administrators and Network Engineers can create or update inventory records. Network Technicians can view inventory details for field support.</div>
+        </div>
+
+        <div id="inventoryManageContent" class="card form-card hidden">
+          <div class="card-header"><div><h3>Site inventory register</h3><p class="hint">Record network device, serial, media, bandwidth, and IP details for each site</p></div></div>
+          <form id="inventoryForm" class="app-form">
+            <input type="hidden" id="inventoryRecordId" />
+            <div class="form-grid formal-grid">
+              <label>Site Template
+                <select id="inventorySiteTemplate"><option value="">Select configured site</option></select>
+              </label>
+              <label>Site Name
+                <input id="inventorySiteName" required placeholder="e.g. NRC Pishin / Verification Section" />
+              </label>
+              <label>Site Type
+                <input id="inventorySiteType" placeholder="Auto-filled from directory" />
+              </label>
+              <label>Make
+                <input id="inventoryMake" placeholder="e.g. Dell / HP / Cisco / Fortinet" />
+              </label>
+              <label>Model
+                <input id="inventoryModel" placeholder="e.g. PowerEdge / FortiGate 60F / Catalyst 2960" />
+              </label>
+              <label>Serial No
+                <input id="inventorySerialNo" placeholder="Serial number" />
+              </label>
+              <label>System / Device IP Address
+                <input id="inventoryDeviceIp" placeholder="e.g. 10.10.10.5" />
+              </label>
+              <label>LAN IP
+                <input id="inventoryLanIp" placeholder="e.g. 192.168.10.1" />
+              </label>
+              <label>Firewall Make / Model
+                <input id="inventoryFirewallModel" placeholder="e.g. FortiGate 80F" />
+              </label>
+              <label>Firewall Serial No
+                <input id="inventoryFirewallSerial" placeholder="Firewall serial number" />
+              </label>
+              <label>Firewall IP
+                <input id="inventoryFirewallIp" placeholder="Firewall management IP" />
+              </label>
+              <label>Firewall Bandwidth
+                <input id="inventoryFirewallBandwidth" placeholder="e.g. 100 Mbps throughput" />
+              </label>
+              <label>Switch Make / Model
+                <input id="inventorySwitchModel" placeholder="e.g. Cisco Catalyst 2960" />
+              </label>
+              <label>Switch Serial No
+                <input id="inventorySwitchSerial" placeholder="Switch serial number" />
+              </label>
+              <label>Switch IP
+                <input id="inventorySwitchIp" placeholder="Switch management IP" />
+              </label>
+              <label>Switch Bandwidth
+                <input id="inventorySwitchBandwidth" placeholder="e.g. 1 Gbps uplink" />
+              </label>
+              <label>Primary Media
+                <input id="inventoryPrimaryMedia" placeholder="Auto-filled from site directory" />
+              </label>
+              <label>Primary Bandwidth
+                <input id="inventoryPrimaryBandwidth" placeholder="Auto-filled from site directory" />
+              </label>
+              <label>Primary Media IP
+                <input id="inventoryPrimaryMediaIp" placeholder="Primary media IP" />
+              </label>
+              <label>Secondary Media
+                <input id="inventorySecondaryMedia" placeholder="Auto-filled from site directory" />
+              </label>
+              <label>Secondary Bandwidth
+                <input id="inventorySecondaryBandwidth" placeholder="Auto-filled from site directory" />
+              </label>
+              <label>Secondary Media IP
+                <input id="inventorySecondaryMediaIp" placeholder="Secondary media IP" />
+              </label>
+              <label>DVBrcs IP
+                <input id="inventoryDvbrcsIp" placeholder="DVBrcs-related IP if applicable" />
+              </label>
+            </div>
+            <label>Inventory Remarks
+              <textarea id="inventoryRemarks" rows="4" placeholder="Any additional hardware, labeling, or site-specific notes..."></textarea>
+            </label>
+            <div class="form-actions">
+              <button type="submit">Save Inventory Record</button>
+              <button type="button" class="ghost-btn" id="inventoryResetBtn">Clear</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card-grid ad-summary-grid">
+          <article class="card summary-card"><span>Total Inventory Records</span><strong id="inventoryTotal">0</strong><small>All logged inventory entries</small></article>
+          <article class="card summary-card"><span>Sites with Firewall</span><strong id="inventoryFirewallCount">0</strong><small>Firewall information available</small></article>
+          <article class="card summary-card"><span>Sites with Switch</span><strong id="inventorySwitchCount">0</strong><small>Switch information available</small></article>
+          <article class="card summary-card"><span>DVBrcs IP Recorded</span><strong id="inventoryDvbrcsCount">0</strong><small>Sites with DVBrcs inventory details</small></article>
+        </div>
+
+        <article class="card">
+          <div class="card-header responsive-stack">
+            <div>
+              <h3>Inventory tracker</h3>
+              <p class="hint">Check make, model, serial numbers, IP addressing, and media details on the spot for each site</p>
+            </div>
+            <div class="toolbar wrap">
+              <input id="inventorySearch" placeholder="Search site, model, serial, IP, media..." />
+              <button type="button" class="ghost-btn" id="exportInventoryCsvBtn">Export CSV</button>
+            </div>
+          </div>
+          <div id="inventoryTable" class="table-wrapper"></div>
+        </article>
+      </section>
+
+      <section class="tab-panel" id="technical-tasks" role="tabpanel" aria-labelledby="technical-tasks-tab">
+        <article class="card helper-card">
+          <div class="helper-grid">
+            <div>
+              <p class="eyebrow">Technical support operations</p>
+              <h3>Readable technical task register for RHO Quetta, Verification Section, project sites, MRV, and DAUs</h3>
+              <p class="hint">The form is now grouped by request source, device details, scheduling, and remarks so that the fields remain readable and do not overlap.</p>
+            </div>
+            <div class="steps-inline">
+              <span>1. Select site</span>
+              <span>2. Record task</span>
+              <span>3. Save / close job</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="card-grid ad-summary-grid">
+          <article class="card summary-card"><span>Total Tasks</span><strong id="taskTotal">0</strong><small>All logged technical requests</small></article>
+          <article class="card summary-card"><span>Installations</span><strong id="taskInstallations">0</strong><small>New system / device installs</small></article>
+          <article class="card summary-card"><span>Upgradations</span><strong id="taskUpgradations">0</strong><small>System / hardware upgrades</small></article>
+          <article class="card summary-card"><span>Replacements / Faults</span><strong id="taskReplacements">0</strong><small>Replacement and repair jobs</small></article>
+        </div>
+
+        <div class="card-grid chart-grid">
+          <article class="card">
+            <div class="card-header"><div><h3>Technical task type comparison</h3><p class="hint">Installation, upgrade, replacement, repair, and preventive work</p></div></div>
+            <div id="taskTypeChart" class="chart-box"></div>
+          </article>
+          <article class="card">
+            <div class="card-header"><div><h3>Request origin comparison</h3><p class="hint">Sections, verification section, project sites, MRV, and DAU origins</p></div></div>
+            <div id="taskOriginChart" class="chart-box"></div>
+          </article>
+        </div>
+
+        <article class="card form-card wide-form-card">
+          <div class="card-header">
+            <div>
+              <h3>Technical task register</h3>
+              <p class="hint">Log installations, upgradations, replacements, faults, and preventive maintenance in a structured format</p>
+            </div>
+          </div>
+          <form id="taskForm" class="app-form">
+            <input type="hidden" id="taskRecordId" />
+
+            <section class="form-section">
+              <div class="section-title-row">
+                <h4>Section A — Request source</h4>
+                <p class="hint">Choose the site and origin of the technical request</p>
+              </div>
+              <div class="form-grid formal-grid">
+                <label>Location / Site Template
+                  <select id="taskSiteTemplate"><option value="">Select configured site</option></select>
+                </label>
+                <label>Request Origin
+                  <select id="taskOrigin">
+                    <option>RHO Quetta Section</option>
+                    <option>Verification Section</option>
+                    <option>Project Site</option>
+                    <option>MRV</option>
+                    <option>DAU</option>
+                  </select>
+                </label>
+                <label>Location / Site Name
+                  <input id="taskLocationName" required placeholder="e.g. Verification Section / NRC Pishin" />
+                </label>
+                <label>Requesting Section / Office
+                  <input id="taskSectionName" placeholder="e.g. Verification Section / Project Team" />
+                </label>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="section-title-row">
+                <h4>Section B — Task details</h4>
+                <p class="hint">Specify the type of technical work and the affected equipment</p>
+              </div>
+              <div class="form-grid formal-grid">
+                <label>Task Type
+                  <select id="taskType">
+                    <option>Installation</option>
+                    <option>Upgradation</option>
+                    <option>Replacement</option>
+                    <option>Fault Repair</option>
+                    <option>Preventive Maintenance</option>
+                  </select>
+                </label>
+                <label>System / Equipment
+                  <input id="taskAsset" required placeholder="e.g. PC, Printer, Scanner, Router, Enrollment System" />
+                </label>
+                <label>Priority
+                  <select id="taskPriority">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                    <option>Critical</option>
+                  </select>
+                </label>
+                <label>Status
+                  <select id="taskStatus">
+                    <option>Open</option>
+                    <option>In Progress</option>
+                    <option>Resolved</option>
+                    <option>Closed</option>
+                  </select>
+                </label>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="section-title-row">
+                <h4>Section C — Scheduling and ownership</h4>
+                <p class="hint">Track request date, completion date, and who raised the request</p>
+              </div>
+              <div class="form-grid formal-grid">
+                <label>Request Date
+                  <input id="taskRequestDate" type="date" required />
+                </label>
+                <label>Completed Date
+                  <input id="taskCompletedDate" type="date" />
+                </label>
+                <label>Requested By
+                  <input id="taskRequestedBy" placeholder="Section focal person / officer" />
+                </label>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="section-title-row">
+                <h4>Section D — Task remarks</h4>
+                <p class="hint">Mention installation notes, replacement details, or field observations</p>
+              </div>
+              <label>Task Remarks
+                <textarea id="taskRemarks" rows="4" placeholder="Installed new device, upgraded RAM, replaced faulty component, visited site, informed user..."></textarea>
+              </label>
+            </section>
+
+            <div class="form-actions">
+              <button type="submit">Save Technical Task</button>
+              <button type="button" class="ghost-btn" id="taskResetBtn">Clear</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="card">
+          <div class="card-header responsive-stack">
+            <div>
+              <h3>Technical task tracker</h3>
+              <p class="hint">Search, filter, review, and export technical work records</p>
+            </div>
+            <div class="toolbar wrap">
+              <input id="taskSearch" placeholder="Search location, asset, origin, requested by..." />
+              <select id="taskTypeFilter">
+                <option value="All">All Task Types</option>
+                <option value="Installation">Installation</option>
+                <option value="Upgradation">Upgradation</option>
+                <option value="Replacement">Replacement</option>
+                <option value="Fault Repair">Fault Repair</option>
+                <option value="Preventive Maintenance">Preventive Maintenance</option>
+              </select>
+              <button type="button" class="ghost-btn" id="exportTasksCsvBtn">Export CSV</button>
+            </div>
+          </div>
+          <div id="taskTable" class="table-wrapper"></div>
+        </article>
+      </section>
+
+      <section class="tab-panel" id="ad-support" role="tabpanel" aria-labelledby="ad-support-tab">
+        <article class="card helper-card">
+          <div class="helper-grid">
+            <div>
+              <p class="eyebrow">Active Directory support</p>
+              <h3>Clear and user-friendly AD support workflow</h3>
+              <p class="hint">The AD support page is now grouped into summaries, alerts, charts, the request form, and a clean tracker table for easier use and readability.</p>
+            </div>
+            <div class="steps-inline">
+              <span>1. Log request</span>
+              <span>2. Update status</span>
+              <span>3. Resolve and report</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="card-grid ad-summary-grid">
+          <article class="card summary-card"><span>Total Requests</span><strong id="adTotalRequests">0</strong><small>All logged AD support requests</small></article>
+          <article class="card summary-card"><span>Password Resets</span><strong id="adPasswordRequests">0</strong><small>Refresh / reset requests</small></article>
+          <article class="card summary-card"><span>Account Unlocks</span><strong id="adUnlockRequests">0</strong><small>Unlock assistance requests</small></article>
+          <article class="card summary-card"><span>OU Transfers</span><strong id="adTransferRequests">0</strong><small>Posting / transfer support</small></article>
+        </div>
+
+        <article class="card critical-card">
+          <div class="card-header"><div><h3>AD support alerts</h3><p class="hint">Repeated employee password reset and unlock requests</p></div></div>
+          <div id="adAlerts" class="alert-stack"></div>
+        </article>
+
+        <div class="card-grid chart-grid">
+          <article class="card">
+            <div class="card-header"><div><h3>Request type comparison</h3><p class="hint">Distribution of AD support request types</p></div></div>
+            <div id="adTypeChart" class="chart-box"></div>
+          </article>
+          <article class="card">
+            <div class="card-header"><div><h3>Top repeated employees</h3><p class="hint">Employees with highest repeated reset/unlock requests</p></div></div>
+            <div id="adEmployeeChart" class="chart-box"></div>
+          </article>
+        </div>
+
+        <article class="card form-card wide-form-card">
+          <div class="card-header"><div><h3>AD support request</h3><p class="hint">Track OU transfer, password reset, and account unlock requests in a structured format</p></div></div>
+          <form id="adForm" class="app-form">
+            <input type="hidden" id="adRecordId" />
+
+            <section class="form-section">
+              <div class="section-title-row">
+                <h4>Section A — Employee details</h4>
+                <p class="hint">Record the employee and movement information</p>
+              </div>
+              <div class="form-grid formal-grid">
+                <label>Employee Name
+                  <input id="employeeName" required placeholder="e.g. Ayesha Bibi" />
+                </label>
+                <label>Employee ID / CNIC Ref
+                  <input id="employeeRef" placeholder="e.g. EMP-2187" />
+                </label>
+                <label>Current / Old Site
+                  <input id="oldDau" placeholder="e.g. Mega Center Morning Shift" />
+                </label>
+                <label>Target / New Site or OU
+                  <input id="newDau" placeholder="e.g. NRC Zhob" />
+                </label>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="section-title-row">
+                <h4>Section B — Request details</h4>
+                <p class="hint">Capture the AD support action and ownership</p>
+              </div>
+              <div class="form-grid formal-grid">
+                <label>Request Type
+                  <select id="requestType">
+                    <option>OU Transfer</option>
+                    <option>Password Reset</option>
+                    <option>Account Unlock</option>
+                  </select>
+                </label>
+                <label>HR Order / Reference
+                  <input id="hrOrder" placeholder="e.g. HQ-HR-Postings-2026-117" />
+                </label>
+                <label>Requested By
+                  <input id="requestedBy" placeholder="DAU Incharge / HR Officer" />
+                </label>
+                <label>Status
+                  <select id="adStatus">
+                    <option>Open</option>
+                    <option>In Progress</option>
+                    <option>Resolved</option>
+                  </select>
+                </label>
+                <label>Request Date
+                  <input id="requestDate" type="date" required />
+                </label>
+                <label>Completed Date
+                  <input id="completedDate" type="date" />
+                </label>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="section-title-row">
+                <h4>Section C — Resolution notes</h4>
+                <p class="hint">Write the action taken and confirmation details</p>
+              </div>
+              <label>Resolution Notes
+                <textarea id="adNotes" rows="4" placeholder="Moved user to correct OU, temporary password shared, account unlocked, user informed..."></textarea>
+              </label>
+            </section>
+
+            <div class="form-actions">
+              <button type="submit">Save AD Request</button>
+              <button type="button" class="ghost-btn" id="adResetBtn">Clear</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="card">
+          <div class="card-header responsive-stack">
+            <div>
+              <h3>AD support tracker</h3>
+              <p class="hint">Search, filter, review, and export AD support records</p>
+            </div>
+            <div class="toolbar wrap">
+              <input id="adSearch" placeholder="Search employee, site, HR order..." />
+              <select id="adTypeFilter">
+                <option value="All">All Types</option>
+                <option value="OU Transfer">OU Transfer</option>
+                <option value="Password Reset">Password Reset</option>
+                <option value="Account Unlock">Account Unlock</option>
+              </select>
+              <button type="button" class="ghost-btn" id="exportAdCsvBtn">Export CSV</button>
+            </div>
+          </div>
+          <div id="adTable" class="table-wrapper"></div>
+        </article>
+      </section>
+
+      <section class="tab-panel" id="users" role="tabpanel" aria-labelledby="users-tab">
+        <div id="userAdminNotice" class="card hidden">
+          <div class="card-header"><div><h3>Restricted module</h3><p class="hint">Only administrators can manage user accounts.</p></div></div>
+          <div class="notice">Please sign in with an administrator account to create, update, activate, or deactivate users.</div>
+        </div>
+
+        <div id="userAdminContent" class="split-layout hidden">
+          <article class="card form-card">
+            <div class="card-header"><div><h3>User access management</h3><p class="hint">Create and maintain authorized users for the application</p></div></div>
+            <form id="userForm" class="app-form">
+              <input type="hidden" id="userRecordId" />
+              <div class="form-grid formal-grid">
+                <label>Full Name
+                  <input id="userFullName" required placeholder="e.g. Regional Support Officer" />
+                </label>
+                <label>Email / Username
+                  <input id="userUsername" required type="email" placeholder="officer@nadra.pk" />
+                </label>
+                <label>Role
+                  <select id="userRole">
+                    <option>Network Engineer</option>
+                    <option>Network Technician</option>
+                    <option>Admin</option>
+                  </select>
+                </label>
+                <label>Status
+                  <select id="userStatus">
+                    <option>Active</option>
+                    <option>Inactive</option>
+                  </select>
+                </label>
+                <label>Password
+                  <input id="userPassword" required type="text" placeholder="Temporary password" />
+                </label>
+              </div>
+              <div class="notice"><strong>Page access:</strong> permissions are assigned automatically by role. Admin has full access, Network Engineer has operational/reporting access, and Network Technician has field-oriented operational access.</div>
+              <div class="form-actions">
+                <button type="submit">Save User</button>
+                <button type="button" class="ghost-btn" id="userResetBtn">Clear</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="card">
+            <div class="card-header responsive-stack">
+              <div>
+                <h3>Authorized users</h3>
+                <p class="hint">Edit role, review access, and activate/deactivate user accounts</p>
+              </div>
+              <div class="toolbar wrap">
+                <input id="userSearch" placeholder="Search user, role, email..." />
+              </div>
+            </div>
+            <div id="usersTable" class="table-wrapper"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="ai-assistant" role="tabpanel" aria-labelledby="ai-assistant-tab">
+        <div class="card-grid ai-grid">
+          <article class="card">
+            <div class="card-header"><div><h3>AI escalation assistant</h3><p class="hint">Formal complaint classification, provider escalation draft, site update, and next technical steps</p></div></div>
+            <div class="app-form">
+              <label>Select Complaint
+                <select id="aiComplaintSelect"></select>
+              </label>
+              <label>Extra context for AI
+                <textarea id="aiExtraContext" rows="5" placeholder="Example: HQ must be kept in CC, backup SIM is also unstable, token processing has stopped completely."></textarea>
+              </label>
+              <div class="form-actions">
+                <button type="button" id="runAiBtn">Draft AI Response</button>
+                <button type="button" class="ghost-btn" id="loadPromptBtn">Show AI Instructions</button>
+              </div>
+            </div>
+            <div class="notice"><strong>Live note:</strong> on deployment, connect your AI environment variables to make this feature use a real model. Without a key, the fallback logic still demonstrates the workflow.</div>
+          </article>
+
+          <article class="card">
+            <div class="card-header"><div><h3>AI output</h3><p class="hint">Generated formal operational response</p></div></div>
+            <pre id="aiOutput" class="ai-output">Choose a complaint and click “Draft AI Response”.</pre>
+          </article>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="documentation" role="tabpanel" aria-labelledby="documentation-tab">
+        <div class="card-grid report-grid-main">
+          <article class="card">
+            <div class="card-header"><div><h3>Assignment alignment</h3><p class="hint">This application remains aligned with the final project requirements</p></div></div>
+            <ol class="doc-list">
+              <li><strong>Original idea:</strong> built from a real NADRA regional network operations workflow.</li>
+              <li><strong>Complete app:</strong> complaint intake, closure, reporting, directory administration, mapping, technical tasks, AD support, user access, and AI are all connected.</li>
+              <li><strong>AI feature:</strong> custom formal escalation workflow and prompt included.</li>
+              <li><strong>Deployment ready:</strong> GitHub and Vercel friendly structure already included.</li>
+              <li><strong>Reporting ready:</strong> guides, screenshots, PDF tutorials, and checklists included.</li>
+            </ol>
+          </article>
+
+          <article class="card">
+            <div class="card-header"><div><h3>Project files and guides</h3><p class="hint">Open the documentation and PDF guides directly</p></div></div>
+            <div class="resource-links-grid">
+              <a class="resource-link" href="README.md" target="_blank" rel="noopener">Open README Report</a>
+              <a class="resource-link" href="docs/PROJECT_NOTES_VISUAL_GUIDE.pdf" target="_blank" rel="noopener">Open Redesigned Project Notes PDF</a>
+              <a class="resource-link" href="docs/PORTAL_DEMO_USER_GUIDE.pdf" target="_blank" rel="noopener">Open Portal Demo User Guide PDF</a>
+              <a class="resource-link" href="docs/COMPLETE_PROJECT_GUIDE.pdf" target="_blank" rel="noopener">Open Complete Project Guide PDF</a>
+              <a class="resource-link" href="docs/ASSIGNMENT_TASK_STEPS.pdf" target="_blank" rel="noopener">Open Assignment Task Steps PDF</a>
+              <a class="resource-link" href="docs/NADRA_LinkOps_AI_Visual_Tutorial.pdf" target="_blank" rel="noopener">Open Visual Tutorial PDF</a>
+              <a class="resource-link" href="docs/SUBMISSION_CHECKLIST.md" target="_blank" rel="noopener">Open Submission Checklist</a>
+              <a class="resource-link" href="docs/SOURCES.md" target="_blank" rel="noopener">Open Source Notes</a>
+              <a class="resource-link" href="docs/SUPABASE_BACKEND_SETUP.md" target="_blank" rel="noopener">Open Backend Upgrade Guide</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
