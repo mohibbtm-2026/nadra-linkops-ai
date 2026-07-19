@@ -42,7 +42,7 @@ Doing all of that manually in notebooks, WhatsApp, or scattered Excel sheets mak
 
 > **Replace this with your real Vercel URL before submission:**
 
-**Live URL:** [https://your-vercel-project.vercel.app](https://nadra-linkops-ai.vercel.app/)
+**Live URL:** [https://nadra-linkops-ai.vercel.app/]
 
 > Important: the assignment requires a **working public URL**. After deployment, update this section with your real live link.
 
